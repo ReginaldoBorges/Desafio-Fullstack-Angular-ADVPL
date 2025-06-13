@@ -7,6 +7,7 @@ import {
   PoPageModule,
   PoToolbarModule,
 } from '@po-ui/ng-components';
+import { ListTarefasComponent } from './tarefas/list-tarefas/list-tarefas.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import {
     CommonModule,
     PoToolbarModule,
     PoMenuModule,
-    PoPageModule
+    PoPageModule,
+    ListTarefasComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
