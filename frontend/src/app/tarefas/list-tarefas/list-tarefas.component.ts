@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PoTableColumn, PoTableModule } from '@po-ui/ng-components';
 import { TarefasStruct } from '../tarefas.struct';
+import { TarefasService } from '../../services/tarefas.service';
 
 @Component({
   selector: 'app-list-tarefas',
@@ -12,7 +13,19 @@ export class ListTarefasComponent {
   columns: Array<PoTableColumn> = TarefasStruct.getGridColumns();
   items: Array<any> = [];
 
-  constructor() {}
+  constructor(private tarefasService: TarefasService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadTarefas();
+  }
+
+  /**
+   *  Método para carregar listas de tarefas
+   */
+  loadTarefas() {
+    this.tarefasService.getTarefas().subscribe((data) => {
+      this.items = data;
+      console.table('Tarefas carregadas:', this.items);
+    });
+  }
 }
